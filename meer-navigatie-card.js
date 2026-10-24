@@ -14,7 +14,7 @@
 //
 // Bron en documentatie: https://github.com/timoverwoest/meer-navigatie-card
 
-const VERSIE = "1.0.0";
+const VERSIE = "1.0.1";
 
 class MeerNavigatieCard extends HTMLElement {
   setConfig(config) {
@@ -133,7 +133,7 @@ if (!customElements.get("meer-navigatie-card")) {
   window.customCards.push({
     type: "meer-navigatie-card",
     name: "Meer navigatie",
-    description: "Knoppen naar alle pagina's van een dashboard die de gebruiker mag zien.",
+    description: "Buttons to every page of a dashboard that the current user may see.",
   });
   console.info(`meer-navigatie-card ${VERSIE}`);
 }

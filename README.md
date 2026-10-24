@@ -1,67 +1,71 @@
 # Meer navigatie card
 
-Een Home Assistant dashboard-kaart met knoppen naar alle pagina's (views en subviews) van een
-dashboard, in dezelfde volgorde als in dat dashboard. De kaart toont alleen knoppen voor pagina's
-die de ingelogde gebruiker mag zien.
+*[Nederlandse versie](README.nl.md)*
 
-<img src="https://raw.githubusercontent.com/timoverwoest/meer-navigatie-card/main/images/voorbeeld.png" alt="Voorbeeld: twee kolommen knoppen naar dashboardpagina's" width="360">
+A Home Assistant dashboard card with buttons to every page (views and subviews) of a dashboard, in
+the same order as in that dashboard. The card only shows buttons for pages the logged-in user is
+allowed to see.
 
-* Volgt de **Zichtbaarheid** van elke pagina. Geef je iemand rechten op een pagina, of haal je ze
-  weg, dan verschijnt of verdwijnt de knop vanzelf. Je hoeft de kaart niet aan te passen.
-* Nieuwe pagina's krijgen automatisch een knop, op hun plek in de volgorde.
-* De knoppen zien eruit als gewone tegels (tile card) en passen in een sections-view.
-* Geen afhankelijkheden; alleen de standaard `sun`-integratie (zie [Beperkingen](#beperkingen)).
+<img src="https://raw.githubusercontent.com/timoverwoest/meer-navigatie-card/main/images/voorbeeld.png" alt="Example: two columns of buttons to dashboard pages" width="360">
 
-## Installatie
+* Follows each page's **Visibility** setting. Give someone access to a page, or take it away, and
+  the button appears or disappears by itself. No need to edit the card.
+* New pages get a button automatically, in their place in the order.
+* The buttons look like regular tile cards and fit in a sections view.
+* No dependencies; only the built-in `sun` integration (see [Limitations](#limitations)).
 
-### Via HACS (custom repository)
+("Meer" is Dutch for "more": the card was built for a "More" section at the bottom of a home page.)
 
-1. HACS → ⋮ → **Aangepaste repositories**.
+## Installation
+
+### HACS (custom repository)
+
+1. HACS → ⋮ → **Custom repositories**.
 2. Repository `https://github.com/timoverwoest/meer-navigatie-card`, type **Dashboard**.
-3. Installeer **Meer navigatie card** en ververs de browser.
+3. Install **Meer navigatie card** and refresh your browser.
 
-### Handmatig
+### Manual
 
-1. Download `meer-navigatie-card.js` en zet het in `/config/www/`.
-2. Instellingen → Dashboards → ⋮ → **Bronnen** → toevoegen:
-   `/local/meer-navigatie-card.js?v=1.0.0`, type **JavaScript-module**.
-3. Ververs de browser. Verhoog `?v=` bij elke nieuwe versie.
+1. Download `meer-navigatie-card.js` and put it in `/config/www/`.
+2. Settings → Dashboards → ⋮ → **Resources** → add
+   `/local/meer-navigatie-card.js?v=1.0.1`, type **JavaScript module**.
+3. Refresh your browser. Raise `?v=` with every new version.
 
-## Configuratie
+## Configuration
 
 ```yaml
 type: custom:meer-navigatie-card
 ```
 
-| Optie       | Standaard | Betekenis |
-|-------------|-----------|-----------|
-| `dashboard` | `null`    | URL-pad van het dashboard waarvan de pagina's getoond worden. `null` is het standaarddashboard (`/lovelace`). |
-| `exclude`   | `[]`      | Paden van pagina's die geen knop krijgen, bijvoorbeeld de pagina waar de kaart zelf op staat. |
-| `names`     | `{}`      | Andere knopnaam per paginatitel, bijvoorbeeld `{Licht_Secties: Licht}`. |
-| `extra`     | `[]`      | Eigen knoppen: `{after, name, icon, path}`. De knop komt direct na de pagina met pad `after`. |
-| `columns`   | `2`       | Aantal knoppen naast elkaar. |
+| Option      | Default | Description |
+|-------------|---------|-------------|
+| `dashboard` | `null`  | URL path of the dashboard whose pages are listed. `null` is the default dashboard (`/lovelace`). |
+| `exclude`   | `[]`    | Paths of pages that get no button, for example the page the card itself is on. |
+| `names`     | `{}`    | Different button name per page title, for example `{Lights_Sections: Lights}`. |
+| `extra`     | `[]`    | Your own buttons: `{after, name, icon, path}`. The button is placed right after the page with path `after`. |
+| `columns`   | `2`     | Number of buttons per row. |
 
-### Voorbeeld: uitklapbaar "Meer"-blok
+### Example: collapsible "More" section
 
-Met een `input_boolean`-helper (hier `input_boolean.dashboard_meer_open`) en standaard
-zichtbaarheidsvoorwaarden. Tik op de kop om open en dicht te klappen.
+Uses an `input_boolean` helper (here `input_boolean.dashboard_more_open`) and standard visibility
+conditions. Tap the heading to expand or collapse.
 
 ```yaml
 type: grid
 cards:
   - type: heading
-    heading: Meer
+    heading: More
     icon: mdi:dots-horizontal
     tap_action:
       action: perform-action
       perform_action: input_boolean.toggle
       target:
-        entity_id: input_boolean.dashboard_meer_open
+        entity_id: input_boolean.dashboard_more_open
   - type: custom:meer-navigatie-card
     exclude:
       - home
     names:
-      Licht_Secties: Licht
+      Lights_Sections: Lights
     extra:
       - after: home
         name: Home (extra)
@@ -69,32 +73,31 @@ cards:
         path: /lovelace/home-extra
     visibility:
       - condition: state
-        entity: input_boolean.dashboard_meer_open
+        entity: input_boolean.dashboard_more_open
         state: "on"
 ```
 
-Let op: een helper is voor iedereen gelijk. Klapt de één het blok open, dan staat het ook bij de
-ander open.
+Note: a helper has one state for everyone. If one person expands the section, it is expanded for
+everybody else too.
 
-## Hoe het werkt
+## How it works
 
-Bij het openen van de pagina leest de kaart de configuratie van het dashboard
-(`lovelace/config`, dat mag elke ingelogde gebruiker). Per pagina kijkt hij naar `visible`:
+When the page opens, the card reads the dashboard configuration (`lovelace/config`, which every
+logged-in user may read). For each page it looks at `visible`:
 
-* geen `visible`: iedereen ziet de knop;
-* een lijst met gebruikers: alleen die gebruikers zien de knop;
-* `visible: false`: niemand ziet de knop.
+* no `visible`: everyone sees the button;
+* a list of users: only those users see the button;
+* `visible: false`: nobody sees the button.
 
-Na het opslaan van het dashboard (`lovelace_updated`) laadt de kaart opnieuw.
+After the dashboard is saved (`lovelace_updated`) the card reloads.
 
-## Beperkingen
+## Limitations
 
-* De knoppen zijn tile cards met `sun.sun` als entiteit, omdat een tegel een entiteit nodig heeft.
-  De status is verborgen; alleen de kleur van het icoon volgt de zon (overdag actief, 's avonds
-  gedimd).
-* De kaart verbergt alleen knoppen. Wie het adres van een pagina kent, kan die nog steeds openen.
-  Zichtbaarheid is in Home Assistant geen beveiliging.
+* The buttons are tile cards with `sun.sun` as their entity, because a tile needs an entity. The
+  state is hidden; only the icon colour follows the sun (active by day, dimmed at night).
+* The card only hides buttons. Anyone who knows a page's address can still open it. Visibility in
+  Home Assistant is not a security feature.
 
-## Licentie
+## License
 
-MIT, zie [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).
