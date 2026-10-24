@@ -97,4 +97,4 @@ Na het opslaan van het dashboard (`lovelace_updated`) laadt de kaart opnieuw.
 
 ## Licentie
 
-Nog te bepalen.
+MIT, zie [LICENSE](LICENSE).
