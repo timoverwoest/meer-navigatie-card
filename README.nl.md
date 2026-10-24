@@ -78,6 +78,27 @@ cards:
 Let op: een helper is voor iedereen gelijk. Klapt de één het blok open, dan staat het ook bij de
 ander open.
 
+Wil je dat het blok na een tijdje vanzelf weer dichtklapt, voeg dan een automatisering toe. Stel de
+tijd in onder `for` (hier 2 minuten):
+
+```yaml
+alias: Meer-blok dichtklappen
+triggers:
+  - trigger: state
+    entity_id: input_boolean.dashboard_meer_open
+    to: "on"
+    for:
+      minutes: 2
+actions:
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.dashboard_meer_open
+mode: single
+```
+
+De tijd begint opnieuw elke keer dat het blok wordt opengeklapt. Herstart Home Assistant terwijl
+het blok open staat, dan vervalt de tijd en blijft het open tot iemand het dichtklapt.
+
 ## Hoe het werkt
 
 Bij het openen van de pagina leest de kaart de configuratie van het dashboard

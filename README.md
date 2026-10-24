@@ -80,6 +80,27 @@ cards:
 Note: a helper has one state for everyone. If one person expands the section, it is expanded for
 everybody else too.
 
+To collapse the section again automatically after a while, add an automation. Set the time under
+`for` (here 2 minutes):
+
+```yaml
+alias: Collapse "More" section
+triggers:
+  - trigger: state
+    entity_id: input_boolean.dashboard_more_open
+    to: "on"
+    for:
+      minutes: 2
+actions:
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.dashboard_more_open
+mode: single
+```
+
+The timer restarts every time the section is expanded. If Home Assistant restarts while the
+section is open, the timer is lost and the section stays open until someone collapses it.
+
 ## How it works
 
 When the page opens, the card reads the dashboard configuration (`lovelace/config`, which every
