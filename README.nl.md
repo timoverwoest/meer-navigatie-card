@@ -16,17 +16,20 @@ die de ingelogde gebruiker mag zien.
 
 ## Installatie
 
-### Via HACS (custom repository)
+### Via HACS
 
-1. HACS → ⋮ → **Aangepaste repositories**.
-2. Repository `https://github.com/timoverwoest/meer-navigatie-card`, type **Dashboard**.
-3. Installeer **Meer navigatie card** en ververs de browser.
+1. Open HACS en zoek op **Meer navigatie card**.
+2. Download hem en ververs de browser.
+
+Vind je de kaart niet bij het zoeken, voeg hem dan toe als aangepaste repository: HACS → ⋮ →
+**Aangepaste repositories** → `https://github.com/timoverwoest/meer-navigatie-card`, type
+**Dashboard**.
 
 ### Handmatig
 
 1. Download `meer-navigatie-card.js` en zet het in `/config/www/`.
 2. Instellingen → Dashboards → ⋮ → **Bronnen** → toevoegen:
-   `/local/meer-navigatie-card.js?v=1.0.1`, type **JavaScript-module**.
+   `/local/meer-navigatie-card.js?v=1.0.2`, type **JavaScript-module**.
 3. Ververs de browser. Verhoog `?v=` bij elke nieuwe versie.
 
 ## Configuratie

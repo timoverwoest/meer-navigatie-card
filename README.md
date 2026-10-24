@@ -18,17 +18,20 @@ allowed to see.
 
 ## Installation
 
-### HACS (custom repository)
+### HACS
 
-1. HACS → ⋮ → **Custom repositories**.
-2. Repository `https://github.com/timoverwoest/meer-navigatie-card`, type **Dashboard**.
-3. Install **Meer navigatie card** and refresh your browser.
+1. Open HACS and search for **Meer navigatie card**.
+2. Download it and refresh your browser.
+
+If the card does not show up in the search, add it as a custom repository: HACS → ⋮ →
+**Custom repositories** → `https://github.com/timoverwoest/meer-navigatie-card`, type
+**Dashboard**.
 
 ### Manual
 
 1. Download `meer-navigatie-card.js` and put it in `/config/www/`.
 2. Settings → Dashboards → ⋮ → **Resources** → add
-   `/local/meer-navigatie-card.js?v=1.0.1`, type **JavaScript module**.
+   `/local/meer-navigatie-card.js?v=1.0.2`, type **JavaScript module**.
 3. Refresh your browser. Raise `?v=` with every new version.
 
 ## Configuration
