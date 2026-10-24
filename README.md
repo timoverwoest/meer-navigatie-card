@@ -4,6 +4,8 @@ Een Home Assistant dashboard-kaart met knoppen naar alle pagina's (views en subv
 dashboard, in dezelfde volgorde als in dat dashboard. De kaart toont alleen knoppen voor pagina's
 die de ingelogde gebruiker mag zien.
 
+<img src="https://raw.githubusercontent.com/timoverwoest/meer-navigatie-card/main/images/voorbeeld.png" alt="Voorbeeld: twee kolommen knoppen naar dashboardpagina's" width="360">
+
 * Volgt de **Zichtbaarheid** van elke pagina. Geef je iemand rechten op een pagina, of haal je ze
   weg, dan verschijnt of verdwijnt de knop vanzelf. Je hoeft de kaart niet aan te passen.
 * Nieuwe pagina's krijgen automatisch een knop, op hun plek in de volgorde.
