@@ -14,7 +14,7 @@
 //
 // Bron en documentatie: https://github.com/timoverwoest/meer-navigatie-card
 
-const VERSIE = "1.0.2";
+const VERSIE = "1.0.3";
 
 class MeerNavigatieCard extends HTMLElement {
   setConfig(config) {

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 – 2026-11-04
+
+* README: installation through the Marketplace (Home Assistant 2026.11 and later); HACS for 2026.10
+  and older.
+
 ## 1.0.2 – 2026-10-24
 
 * In the HACS default list: README leads with searching in HACS; custom repository as fallback.

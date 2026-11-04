@@ -18,20 +18,28 @@ allowed to see.
 
 ## Installation
 
-### HACS
+### Marketplace (Home Assistant 2026.11 and later)
 
-1. Open HACS and search for **Meer navigatie card**.
-2. Download it and refresh your browser.
+1. Settings → **Marketplace**, search for **Meer navigatie card** and open it.
+2. Select **Install** and confirm. The Marketplace adds the dashboard resource for you.
+3. Reload your browser.
 
-If the card does not show up in the search, add it as a custom repository: HACS → ⋮ →
-**Custom repositories** → `https://github.com/timoverwoest/meer-navigatie-card`, type
-**Dashboard**.
+The first time you install from the Marketplace, you are asked to accept that community content is
+not reviewed by Home Assistant. If your dashboard resources are managed in YAML, the install dialog
+shows the resource line to add yourself.
+
+Installed the card with HACS before? Home Assistant moves it to the Marketplace automatically when
+it starts after the update; you don't need to do anything.
+
+### HACS (Home Assistant 2026.10 and older)
+
+Open HACS, search for **Meer navigatie card**, download it and refresh your browser.
 
 ### Manual
 
 1. Download `meer-navigatie-card.js` and put it in `/config/www/`.
 2. Settings → Dashboards → ⋮ → **Resources** → add
-   `/local/meer-navigatie-card.js?v=1.0.2`, type **JavaScript module**.
+   `/local/meer-navigatie-card.js?v=1.0.3`, type **JavaScript module**.
 3. Refresh your browser. Raise `?v=` with every new version.
 
 ## Configuration
