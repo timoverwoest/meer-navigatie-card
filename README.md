@@ -59,7 +59,7 @@ type: custom:meer-navigatie-card
 ### Example: collapsible "More" section
 
 Uses an `input_boolean` helper (here `input_boolean.dashboard_more_open`) and standard visibility
-conditions. Tap the heading to expand or collapse.
+conditions. Select the heading to expand or collapse.
 
 ```yaml
 type: grid

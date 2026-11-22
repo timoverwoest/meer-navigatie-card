@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+* Quality pass following the Home Assistant style guide for custom cards:
+  * reacts to visibility changes again when Home Assistant sets `hass` after the card is placed;
+  * reloads only when this dashboard is saved, not when any dashboard is saved;
+  * rebuilds the buttons only when they change;
+  * shows an error on the card instead of in the browser console; no console output;
+  * invalid configuration shows a clear error (`setConfig`);
+  * card picker: preview and a link to the documentation.
+
 ## 1.0.3 – 2026-11-04
 
 * README: installation through the Marketplace (Home Assistant 2026.11 and later); HACS for 2026.10
