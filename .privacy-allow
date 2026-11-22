@@ -1,0 +1,6 @@
+# Bekeken door Claude op 2026-11-22: paginanamen en iconen, geen namen, adressen of
+# apparaat-ID's; PNG-chunks alleen IHDR/IDAT/IEND (geen EXIF, tekst of tijd).
+images/voorbeeld.png
+
+# Commit-hashes van deze repo zelf (openbaar op GitHub), alleen in dit bestand.
+.git-blame-ignore-revs :: ^[0-9a-f]{40}$

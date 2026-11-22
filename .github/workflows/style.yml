@@ -1,0 +1,27 @@
+name: Style
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  style:
+    name: Style (Prettier and ESLint of the Home Assistant frontend)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      # The versions the Home Assistant frontend uses; only for this check, the card itself
+      # has no dependencies.
+      - name: Install Prettier and ESLint
+        run: npm install --no-save --no-package-lock prettier@3.10.1 eslint@10.15.0 @eslint/js@10.0.1
+      - name: Prettier
+        run: npx prettier --check meer-navigatie-card.js eslint.config.mjs
+      - name: ESLint
+        run: npx eslint meer-navigatie-card.js

@@ -9,6 +9,8 @@
   * shows an error on the card instead of in the browser console; no console output;
   * invalid configuration shows a clear error (`setConfig`);
   * card picker: preview and a link to the documentation.
+* Code formatted with Prettier and checked with ESLint, with the rules of the Home Assistant
+  frontend; a GitHub action checks both on every push.
 
 ## 1.0.3 – 2026-11-04
 

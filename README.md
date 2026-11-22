@@ -130,6 +130,23 @@ After the dashboard is saved (`lovelace_updated`) the card reloads.
 * The card only hides buttons. Anyone who knows a page's address can still open it. Visibility in
   Home Assistant is not a security feature.
 
+## Development
+
+The code follows the
+[coding guidelines of the Home Assistant frontend](https://contributors.home-assistant.io/frontend/development/guidelines/)
+and the page on [custom cards](https://contributors.home-assistant.io/frontend/custom-ui/card/),
+with the same Prettier and ESLint rules (`.prettierrc.json`, `eslint.config.mjs`). The GitHub
+action checks them on every push; with Node you can run the check yourself:
+
+```bash
+npm install --no-save --no-package-lock prettier@3.10.1 eslint@10.15.0 @eslint/js@10.0.1
+npx prettier --check meer-navigatie-card.js eslint.config.mjs
+npx eslint meer-navigatie-card.js
+```
+
+To see which version your browser loaded, run
+`customElements.get("meer-navigatie-card").version` in the browser console.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).

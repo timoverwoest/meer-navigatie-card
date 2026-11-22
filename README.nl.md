@@ -129,6 +129,23 @@ Na het opslaan van het dashboard (`lovelace_updated`) laadt de kaart opnieuw.
 * De kaart verbergt alleen knoppen. Wie het adres van een pagina kent, kan die nog steeds openen.
   Zichtbaarheid is in Home Assistant geen beveiliging.
 
+## Ontwikkeling
+
+De code volgt de
+[coding guidelines van de Home Assistant-frontend](https://contributors.home-assistant.io/frontend/development/guidelines/)
+en de pagina over [custom cards](https://contributors.home-assistant.io/frontend/custom-ui/card/),
+met dezelfde regels voor Prettier en ESLint (`.prettierrc.json`, `eslint.config.mjs`). De
+GitHub-action controleert ze bij elke push; met Node draai je de controle zelf:
+
+```bash
+npm install --no-save --no-package-lock prettier@3.10.1 eslint@10.15.0 @eslint/js@10.0.1
+npx prettier --check meer-navigatie-card.js eslint.config.mjs
+npx eslint meer-navigatie-card.js
+```
+
+Welke versie je browser geladen heeft, zie je met
+`customElements.get("meer-navigatie-card").version` in de console van de browser.
+
 ## Licentie
 
 MIT, zie [LICENSE](LICENSE).
