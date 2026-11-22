@@ -24,17 +24,20 @@ function controleer(config) {
   };
   if (!config || typeof config !== "object") fout("configuration is missing");
   const { dashboard, exclude, names, extra, columns } = config;
-  if (dashboard != null && typeof dashboard !== "string")
+  if (dashboard != null && typeof dashboard !== "string") {
     fout("dashboard must be text or null");
-  if (exclude != null && !Array.isArray(exclude))
+  }
+  if (exclude != null && !Array.isArray(exclude)) {
     fout("exclude must be a list");
+  }
   if (names != null && (typeof names !== "object" || Array.isArray(names))) {
     fout("names must be a mapping (page title: button name)");
   }
   if (extra != null && !Array.isArray(extra)) fout("extra must be a list");
   (extra || []).forEach((e) => {
-    if (!e || typeof e.path !== "string")
+    if (!e || typeof e.path !== "string") {
       fout("every extra button needs a path");
+    }
   });
   if (columns != null && !(Number.isInteger(columns) && columns >= 1)) {
     fout("columns must be a whole number of 1 or more");
@@ -97,8 +100,9 @@ class MeerNavigatieCard extends HTMLElement {
       .subscribeEvents((event) => {
         if (
           (event.data?.url_path ?? null) === (this._config?.dashboard ?? null)
-        )
+        ) {
           this._laad();
+        }
       }, "lovelace_updated")
       .catch(() => () => {});
   }
