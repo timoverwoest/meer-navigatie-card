@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.4 – 2026-11-22
 
 * Quality pass following the Home Assistant style guide for custom cards:
   * reacts to visibility changes again when Home Assistant sets `hass` after the card is placed;

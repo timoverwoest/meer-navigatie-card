@@ -14,7 +14,7 @@
 //
 // Bron en documentatie: https://github.com/timoverwoest/meer-navigatie-card
 
-const VERSIE = "1.0.3";
+const VERSIE = "1.0.4";
 const DOCUMENTATIE = "https://github.com/timoverwoest/meer-navigatie-card";
 
 // Ongeldige configuratie: een Error laat Home Assistant de fout tonen in plaats van de kaart.

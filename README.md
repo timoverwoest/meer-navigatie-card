@@ -39,7 +39,7 @@ Open HACS, search for **Meer navigatie card**, download it and refresh your brow
 
 1. Download `meer-navigatie-card.js` and put it in `/config/www/`.
 2. Settings → Dashboards → ⋮ → **Resources** → add
-   `/local/meer-navigatie-card.js?v=1.0.3`, type **JavaScript module**.
+   `/local/meer-navigatie-card.js?v=1.0.4`, type **JavaScript module**.
 3. Refresh your browser. Raise `?v=` with every new version.
 
 ## Configuration

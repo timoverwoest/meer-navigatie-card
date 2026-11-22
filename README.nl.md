@@ -37,7 +37,7 @@ Open HACS, zoek op **Meer navigatie card**, download hem en ververs de browser.
 
 1. Download `meer-navigatie-card.js` en zet het in `/config/www/`.
 2. Instellingen → Dashboards → ⋮ → **Bronnen** → toevoegen:
-   `/local/meer-navigatie-card.js?v=1.0.3`, type **JavaScript-module**.
+   `/local/meer-navigatie-card.js?v=1.0.4`, type **JavaScript-module**.
 3. Ververs de browser. Verhoog `?v=` bij elke nieuwe versie.
 
 ## Configuratie
